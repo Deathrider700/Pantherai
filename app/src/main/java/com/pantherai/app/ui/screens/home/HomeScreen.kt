@@ -28,6 +28,7 @@ fun HomeScreen(
     onNavigateToVideo: (String) -> Unit,
     onNavigateToTTS: (String) -> Unit,
     onNavigateToTranscription: (String) -> Unit,
+    onNavigateToSupport: () -> Unit,
     onOpenDrawer: () -> Unit
 ) {
     val aiModels = remember {
@@ -159,8 +160,11 @@ fun HomeScreen(
                     IconButton(onClick = { /* Search */ }) {
                         Icon(Icons.Default.Search, contentDescription = "Search")
                     }
-                    IconButton(onClick = { /* Settings */ }) {
-                        Icon(Icons.Default.Settings, contentDescription = "Settings")
+                    IconButton(onClick = onNavigateToSupport) {
+                        Text(
+                            text = "☕️",
+                            style = MaterialTheme.typography.titleLarge
+                        )
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(

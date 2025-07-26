@@ -39,6 +39,7 @@ import kotlinx.coroutines.launch
 fun ChatScreen(
     modelId: String,
     onNavigateBack: () -> Unit,
+    onNavigateToSupport: () -> Unit,
     viewModel: ChatViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -97,6 +98,12 @@ fun ChatScreen(
                     }
                 },
                 actions = {
+                    IconButton(onClick = onNavigateToSupport) {
+                        Text(
+                            text = "☕️",
+                            style = MaterialTheme.typography.titleLarge
+                        )
+                    }
                     IconButton(onClick = { viewModel.clearChat() }) {
                         Icon(Icons.Default.Clear, contentDescription = "Clear Chat")
                     }

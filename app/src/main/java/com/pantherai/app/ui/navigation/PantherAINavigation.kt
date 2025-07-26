@@ -28,6 +28,7 @@ import com.pantherai.app.ui.screens.video.VideoGenerationScreen
 import com.pantherai.app.ui.screens.audio.TTSScreen
 import com.pantherai.app.ui.screens.audio.TranscriptionScreen
 import com.pantherai.app.ui.screens.history.HistoryScreen
+import com.pantherai.app.ui.screens.support.SupportScreen
 import com.pantherai.app.ui.components.DrawerContent
 import kotlinx.coroutines.launch
 
@@ -42,6 +43,7 @@ sealed class Screen(val route: String, val title: String) {
     object Transcription : Screen("transcription/{modelId}", "Audio Transcription")
     object History : Screen("history", "History")
     object Settings : Screen("settings", "Settings")
+    object Support : Screen("support", "Support")
 }
 
 @Composable
@@ -103,6 +105,9 @@ fun PantherAINavigation() {
                     onNavigateToTranscription = { modelId ->
                         navController.navigate(Screen.Transcription.route.replace("{modelId}", modelId))
                     },
+                    onNavigateToSupport = {
+                        navController.navigate(Screen.Support.route)
+                    },
                     onOpenDrawer = {
                         scope.launch {
                             drawerState.open()
@@ -143,6 +148,9 @@ fun PantherAINavigation() {
                     modelId = modelId,
                     onNavigateBack = {
                         navController.popBackStack()
+                    },
+                    onNavigateToSupport = {
+                        navController.navigate(Screen.Support.route)
                     }
                 )
             }
@@ -153,6 +161,9 @@ fun PantherAINavigation() {
                     modelId = modelId,
                     onNavigateBack = {
                         navController.popBackStack()
+                    },
+                    onNavigateToSupport = {
+                        navController.navigate(Screen.Support.route)
                     }
                 )
             }
@@ -163,6 +174,9 @@ fun PantherAINavigation() {
                     modelId = modelId,
                     onNavigateBack = {
                         navController.popBackStack()
+                    },
+                    onNavigateToSupport = {
+                        navController.navigate(Screen.Support.route)
                     }
                 )
             }
@@ -173,6 +187,9 @@ fun PantherAINavigation() {
                     modelId = modelId,
                     onNavigateBack = {
                         navController.popBackStack()
+                    },
+                    onNavigateToSupport = {
+                        navController.navigate(Screen.Support.route)
                     }
                 )
             }
@@ -183,6 +200,9 @@ fun PantherAINavigation() {
                     modelId = modelId,
                     onNavigateBack = {
                         navController.popBackStack()
+                    },
+                    onNavigateToSupport = {
+                        navController.navigate(Screen.Support.route)
                     }
                 )
             }
@@ -194,12 +214,32 @@ fun PantherAINavigation() {
                     },
                     onNavigateToChat = { modelId ->
                         navController.navigate(Screen.Chat.route.replace("{modelId}", modelId))
+                    },
+                    onNavigateToSupport = {
+                        navController.navigate(Screen.Support.route)
                     }
                 )
             }
             
             composable(Screen.Settings.route) {
                 SettingsScreen(
+                    onNavigateBack = {
+                        navController.popBackStack()
+                    },
+                    onLogout = {
+                        // Navigate to login and clear back stack
+                        navController.navigate(Screen.Login.route) {
+                            popUpTo(0) { inclusive = true }
+                        }
+                    },
+                    onNavigateToSupport = {
+                        navController.navigate(Screen.Support.route)
+                    }
+                )
+            }
+            
+            composable(Screen.Support.route) {
+                SupportScreen(
                     onNavigateBack = {
                         navController.popBackStack()
                     }

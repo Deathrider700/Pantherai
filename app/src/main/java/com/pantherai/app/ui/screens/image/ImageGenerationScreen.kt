@@ -22,6 +22,7 @@ import coil.compose.AsyncImage
 fun ImageGenerationScreen(
     modelId: String,
     onNavigateBack: () -> Unit,
+    onNavigateToSupport: () -> Unit,
     viewModel: ImageGenerationViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -50,6 +51,14 @@ fun ImageGenerationScreen(
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                    }
+                },
+                actions = {
+                    IconButton(onClick = onNavigateToSupport) {
+                        Text(
+                            text = "☕️",
+                            style = MaterialTheme.typography.titleLarge
+                        )
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
