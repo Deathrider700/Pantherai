@@ -27,8 +27,8 @@ import javax.inject.Singleton
 class SupabaseService @Inject constructor() {
     
     private val supabase = createSupabaseClient(
-        supabaseUrl = "YOUR_SUPABASE_URL", // Replace with your Supabase URL
-        supabaseKey = "YOUR_SUPABASE_ANON_KEY" // Replace with your Supabase anon key
+        supabaseUrl = "https://byztbckwisiwqnuzkpix.supabase.co", // Replace with your Supabase URL
+        supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ5enRiY2t3aXNpd3FudXprcGl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM1Mjc5NTgsImV4cCI6MjA2OTEwMzk1OH0.wghr0uPB6fnXlwjRysmXNADVAIA3OChsiz7SAe5ncvw" // Replace with your Supabase anon key
     ) {
         install(GoTrue) {
             scheme = "com.pantherai.app"
