@@ -216,8 +216,14 @@ private fun ChatModels() {
     val models = listOf(
         "provider-1/chatgpt-4o-latest",
         "provider-3/gpt-4",
+        "provider-3/gpt-4.1-mini",
+        "provider-6/gpt-4.1-mini",
+        "provider-6/gpt-4o",
         "provider-1/gemini-2.5-pro",
-        "provider-1/mistral-large"
+        "provider-1/mistral-large",
+        "provider-3/deepseek-v3",
+        "provider-1/sonar",
+        "provider-2/mistral-small"
     )
     
     ModelList(models = models)
@@ -226,10 +232,14 @@ private fun ChatModels() {
 @Composable
 private fun ImageModels() {
     val models = listOf(
-        "provider-2/flux.1-schnell",
         "provider-4/imagen-3",
         "provider-4/imagen-4",
-        "provider-6/sana-1.5-flash"
+        "provider-6/sana-1.5-flash",
+        "provider-1/FLUX.1-schnell",
+        "provider-2/FLUX.1-schnell",
+        "provider-3/FLUX.1-schnell",
+        "provider-6/sana-1.5",
+        "provider-1/FLUX.1.1-pro"
     )
     
     ModelList(models = models)
